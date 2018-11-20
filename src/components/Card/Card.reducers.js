@@ -14,7 +14,11 @@ const reducer = (state = initialState, action) => {
         action.payload
       ];
     case EDIT_CARD:
-      return state;
+      return state.map(card => {
+        const { id } = action.payload;
+        if (id === card.id) return Object.assign({}, card, action.payload);
+        return card;
+      });
     case DELETE_CARD:
       return state;
     default:

@@ -17,9 +17,9 @@ class Panel extends Component {
     createCard(panel.id);
   };
 
-  handleDeleteCard = () => {
+  handleDeleteCard = (cardId) => {
     const { panel, deleteCard } = this.props;
-    deleteCard(panel.id);
+    deleteCard(panel.id, cardId);
   }
 
   handleDeletePanel = (panelId) => {
@@ -31,7 +31,7 @@ class Panel extends Component {
   }
 
   render() {
-    const { cards, panel, connectDragPreview, connectDropTarget, connectDragSource, editPanel } = this.props;
+    const { cards, panel, editCard, connectDragPreview, connectDropTarget, connectDragSource, editPanel } = this.props;
     const filteredCards = panel.cards
       .map(id => cards.find(card => card.id === id))
       .filter(card => card);
@@ -56,7 +56,8 @@ class Panel extends Component {
                   <CardBody>
                     <Cards
                       cards={filteredCards}
-                      clickToEdit={this.props.editCard}
+                      clickToEdit={editCard}
+                      editCard={editCard}
                       deleteCard={this.handleDeleteCard}
                       moveCard={this.props.moveCard}
                     />

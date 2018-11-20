@@ -7,6 +7,7 @@ import {
   MOVE_PANEL,
   INSERT_IN_PANEL,
   REMOVE_FROM_PANEL,
+  MOVE_CARD,
 } from './Panel.actions.type';
 
 const isFetchCreatePanel = value => ({
@@ -24,7 +25,8 @@ export const isFetchDeletePanel = id => ({ type: DELETE_PANEL, payload: { id } }
 export const isFetchMovelPanel = (id, monitorId) => ({ type: MOVE_PANEL, payload: { id, monitorId }});
 
 export const isFetchInsertPanel = (panelId, cardId) => ({ type: INSERT_IN_PANEL, payload: { panelId, cardId } });
-export const isFetchRemoveFromPanel = (panelId, cardId) => ({ type: REMOVE_FROM_PANEL, payload: { panelId, cardId } });
+export const isFetchRemoveFromPanel = (panelIdRemove, cardIdRemove) => ({ type: REMOVE_FROM_PANEL, payload: { panelIdRemove, cardIdRemove } });
+export const isFetchMoveCard = (cardIdMove, monitorId) => ({ type: MOVE_CARD, payload: { cardIdMove, monitorId }});
 
 export const createPanel = () => async (dispatch) => {
   dispatch(isFetchCreatePanel('New Panel'));

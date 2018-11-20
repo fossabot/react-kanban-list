@@ -7,7 +7,7 @@ import {
   // MOVE_CARD,
 } from './Card.actions.type';
 
-import { isFetchInsertPanel } from '../Panel/Panel.actions';
+import { isFetchInsertPanel, isFetchRemoveFromPanel } from '../Panel/Panel.actions';
 
 export const isFetchCreateCard = payload => ({ type: CREATE_CARD, payload });
 export const isFetchEditCard = payload => ({ type: EDIT_CARD, payload });
@@ -44,7 +44,7 @@ export const deleteCard = (panelId, cardId) => dispatch => {
 
   if (!panelId) return;
 
-  // dispatch(isFetchRemoveFromPanel(panelId, cardId));
+  dispatch(isFetchRemoveFromPanel(panelId, cardId));
 }
 
 export const moveCard = () => dispatch => {

@@ -5,6 +5,7 @@ import {
   MOVE_PANEL,
   INSERT_IN_PANEL,
   REMOVE_FROM_PANEL,
+  MOVE_CARD,
 } from './Panel.actions.type';
 
 const initialState = [];
@@ -53,6 +54,21 @@ const reducer = (state = initialState, action) => {
         const monitorIndex = state.findIndex(panel => panel.id === monitorId);
         
         return state;
+      case MOVE_CARD:
+        return state;
+      case REMOVE_FROM_PANEL:
+        const { panelIdRemove, cardIdRemove } = action.payload;
+        return state.map((panel) => {
+          const { cards } = panel;
+
+          if (panelIdRemove !== panel.id) {
+            return panel;
+          }
+
+          return Object.assign({}, panel, {
+            cards: cards.filter(id => cardIdRemove !== id)
+          });
+        });
     default:
       return state;
   }
