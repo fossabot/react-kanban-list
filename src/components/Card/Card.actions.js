@@ -47,8 +47,8 @@ export const deleteCard = (panelId, cardId) => dispatch => {
   dispatch(isFetchRemoveFromPanel(panelId, cardId));
 }
 
-export const moveCard = () => dispatch => {
-  // dispatch(isFetchMoveCard);
+export const moveCard = (id, monitorId) => dispatch => {
+  dispatch(isFetchMoveCard);
 };
 
 export const insertInPanel = (id, monitorId) => dispatch => {
