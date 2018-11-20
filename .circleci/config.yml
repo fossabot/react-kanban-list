@@ -23,4 +23,5 @@ jobs:
         
       # run tests!
       # - run: yarn run eslint
-      - run: yarn test
+      - run: yarn test:coverage
+      - run: yarn run coveralls
