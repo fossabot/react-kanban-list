@@ -55,7 +55,28 @@ const reducer = (state = initialState, action) => {
         
         return state;
       case MOVE_CARD:
-        return state;
+        const { cardIdMove, monitorCardMoveId } = action.payload;
+
+        let targetPanel = state.filter(panel => panel.cards.indexOf(cardIdMove));
+        let monitorPanel = state.filter(panel => panel.cards.indexOf(monitorCardMoveId));
+
+        targetPanel = targetPanel[0];
+        monitorPanel = monitorPanel[0];
+
+        const targetCardIndex = targetPanel.cards.indexOf(cardIdMove);
+        const monitorCardIndex = monitorPanel.cards.indexOf(monitorCardMoveId);
+
+        if (targetPanel.id === monitorCardIndex.id) {
+          // :X
+        }
+
+        return state.map((panel) => {
+          const panelId = panel.id;
+
+          console.log('painelId: ', panelId);
+
+          return panel;
+        });
       case REMOVE_FROM_PANEL:
         const { panelIdRemove, cardIdRemove } = action.payload;
         return state.map((panel) => {

@@ -4,15 +4,13 @@ import {
   CREATE_CARD,
   EDIT_CARD,
   DELETE_CARD,
-  // MOVE_CARD,
 } from './Card.actions.type';
 
-import { isFetchInsertPanel, isFetchRemoveFromPanel } from '../Panel/Panel.actions';
+import { isFetchInsertPanel, isFetchRemoveFromPanel, isFetchMoveCard } from '../Panel/Panel.actions';
 
 export const isFetchCreateCard = payload => ({ type: CREATE_CARD, payload });
 export const isFetchEditCard = payload => ({ type: EDIT_CARD, payload });
 export const isFetchDeleteCard = id => ({ type: DELETE_CARD, payload: { id } });
-// export const isFetchMoveCard = () => ({ type: MOVE_CARD });
 
 export const createCard = (panelId) => dispatch => {
   const createNewCard = {
@@ -48,7 +46,7 @@ export const deleteCard = (panelId, cardId) => dispatch => {
 }
 
 export const moveCard = (id, monitorId) => dispatch => {
-  dispatch(isFetchMoveCard);
+  dispatch(isFetchMoveCard(id, monitorId));
 };
 
 export const insertInPanel = (id, monitorId) => dispatch => {

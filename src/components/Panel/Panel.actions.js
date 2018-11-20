@@ -26,7 +26,7 @@ export const isFetchMovelPanel = (id, monitorId) => ({ type: MOVE_PANEL, payload
 
 export const isFetchInsertPanel = (panelId, cardId) => ({ type: INSERT_IN_PANEL, payload: { panelId, cardId } });
 export const isFetchRemoveFromPanel = (panelIdRemove, cardIdRemove) => ({ type: REMOVE_FROM_PANEL, payload: { panelIdRemove, cardIdRemove } });
-export const isFetchMoveCard = (cardIdMove, monitorId) => ({ type: MOVE_CARD, payload: { cardIdMove, monitorId }});
+export const isFetchMoveCard = (cardIdMove, monitorCardMoveId) => ({ type: MOVE_CARD, payload: { cardIdMove, monitorCardMoveId }});
 
 export const createPanel = () => async (dispatch) => {
   dispatch(isFetchCreatePanel('New Panel'));
