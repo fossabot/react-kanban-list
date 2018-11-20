@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 // import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { DragSource, DropTarget } from 'react-dnd'
-import { Card, CardBody, CardHeader, CardFooter, Col, Button } from 'reactstrap';
+import { DragSource, DropTarget } from 'react-dnd';
+import {
+  Card, CardBody, CardHeader, CardFooter, Col, Button,
+} from 'reactstrap';
 
 import Cards from '../Card/Cards';
 import InputEditable from '../InputEditable/InputEditable';
@@ -31,17 +33,19 @@ class Panel extends Component {
   }
 
   render() {
-    const { cards, panel, editCard, connectDragPreview, connectDropTarget, connectDragSource, editPanel } = this.props;
+    const {
+      cards, panel, editCard, connectDragPreview, connectDropTarget, connectDragSource, editPanel,
+    } = this.props;
     const filteredCards = panel.cards
       .map(id => cards.find(card => card.id === id))
       .filter(card => card);
 
     return connectDragPreview(
       connectDropTarget(
-        <div class="card__div">
+        <div className="card__div">
           <Col>
             {connectDragSource(
-              <div class="card__painel">
+              <div className="card__painel">
                 <Card>
                   <CardHeader>
                     <InputEditable
@@ -64,18 +68,20 @@ class Panel extends Component {
                   </CardBody>
                   <CardFooter>
                     <Button onClick={this.handleCreateCard}>
-                      <i className="icon ion-md-add-circle" /> Card
-                  </Button>
+                      <i className="icon ion-md-add-circle" />
+                      {' '}
+Card
+                    </Button>
                   </CardFooter>
                 </Card>
-              </div>
+              </div>,
             )}
           </Col>
-        </div>
-      )
-    )
+        </div>,
+      ),
+    );
   }
-};
+}
 
 const mapStateToProps = state => ({ cards: state.cardsReducer });
 
@@ -84,8 +90,8 @@ const mapDispatchToProps = { ...actions, ...actionsCard };
 const dragNDropSrc = {
   beginDrag(props) {
     return { id: props.panel.id };
-  }
-}
+  },
+};
 
 const collect = (connect, monitor) => ({
   connectDragSource: connect.dragSource(),
@@ -94,8 +100,8 @@ const collect = (connect, monitor) => ({
 });
 
 const collectTarget = (connect, monitor) => ({
-  connectDropTarget: connect.dropTarget()
-})
+  connectDropTarget: connect.dropTarget(),
+});
 
 const panelHoverTarget = {
   hover(props, monitor) {
@@ -111,11 +117,11 @@ const panelHoverTarget = {
     if (!cards.length && CARD === monitorType) {
       return props.insertPanel(id, monitorId);
     }
-  }
-}
+  },
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(
   DragSource(PANEL, dragNDropSrc, collect)(
-    DropTarget([CARD, PANEL], panelHoverTarget, collectTarget)(Panel)
-  )
-)
+    DropTarget([CARD, PANEL], panelHoverTarget, collectTarget)(Panel),
+  ),
+);

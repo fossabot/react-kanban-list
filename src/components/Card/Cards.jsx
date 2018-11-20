@@ -4,10 +4,11 @@ import Card from './Card';
 import InputEditable from '../InputEditable/InputEditable';
 
 class Cards extends Component {
-
   mountCards = () => {
-    const { cards, moveCard, clickToEdit, editCard, deleteCard } = this.props;
-    return cards.map((item) => (
+    const {
+      cards, moveCard, clickToEdit, editCard, deleteCard,
+    } = this.props;
+    return cards.map(item => (
       <Card
         key={item.id}
         id={item.id}
@@ -30,8 +31,8 @@ class Cards extends Component {
       <ul>
         {this.mountCards()}
       </ul>
-    )
+    );
   }
-};
+}
 
 export default Cards;

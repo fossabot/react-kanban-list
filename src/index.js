@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux'
+import { Provider } from 'react-redux';
 // import { Router } from 'react-router';
-import { BrowserRouter as Router } from "react-router-dom";
-import Localforage from 'localforage'
+import { BrowserRouter as Router } from 'react-router-dom';
+import Localforage from 'localforage';
 
 import App from './containers/App/App';
 import * as serviceWorker from './serviceWorker';
@@ -18,8 +18,8 @@ const db = Localforage.createInstance({
   name: 'kanban_react',
   driver: Localforage.INDEXEDDB,
   description: 'Used to store panels and cards',
-  version: 1.0
-})
+  version: 1.0,
+});
 
 db
   .getItem('kanban')
@@ -27,12 +27,13 @@ db
   .then(value => configureStore(value))
   .then((store) => {
     ReactDOM.render(
-      <Provider store={ store }>
+      <Provider store={store}>
         <Router>
           <App />
         </Router>
-      </Provider>
-    ,document.getElementById('root'));
+      </Provider>,
+      document.getElementById('root'),
+    );
   });
 
 serviceWorker.unregister();

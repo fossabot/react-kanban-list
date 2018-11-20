@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Nav, Navbar, NavItem, NavLink, NavbarBrand, Collapse } from 'reactstrap';
 
 class Header extends Component {
   constructor(props) {
@@ -7,22 +6,22 @@ class Header extends Component {
 
     this.toggle = this.toggle.bind(this);
     this.state = {
-      isOpen: false
+      isOpen: false,
     };
   }
 
   toggle() {
+    const { isOpen } = this.state;
     this.setState({
-      isOpen: !this.state.isOpen
+      isOpen: !isOpen,
     });
   }
 
   render() {
     return (
-      <header>
-      </header>
-    )
+      <header />
+    );
   }
-};
+}
 
 export default Header;

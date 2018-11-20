@@ -12,11 +12,11 @@ export const isFetchCreateCard = payload => ({ type: CREATE_CARD, payload });
 export const isFetchEditCard = payload => ({ type: EDIT_CARD, payload });
 export const isFetchDeleteCard = id => ({ type: DELETE_CARD, payload: { id } });
 
-export const createCard = (panelId) => dispatch => {
+export const createCard = panelId => (dispatch) => {
   const createNewCard = {
     id: uuid(),
     edit: false,
-    text: 'New Card'
+    text: 'New Card',
   };
 
   dispatch(isFetchCreateCard(createNewCard));
@@ -24,7 +24,7 @@ export const createCard = (panelId) => dispatch => {
   dispatch(isFetchInsertPanel(panelId, id));
 };
 
-export const editCard = (id, value) => dispatch => {
+export const editCard = (id, value) => (dispatch) => {
   const edited = { id };
 
   if (!value) {
@@ -35,20 +35,20 @@ export const editCard = (id, value) => dispatch => {
   }
 
   dispatch(isFetchEditCard(edited));
-}
+};
 
-export const deleteCard = (panelId, cardId) => dispatch => {
+export const deleteCard = (panelId, cardId) => (dispatch) => {
   dispatch(isFetchDeleteCard(cardId));
 
   if (!panelId) return;
 
   dispatch(isFetchRemoveFromPanel(panelId, cardId));
-}
+};
 
-export const moveCard = (id, monitorId) => dispatch => {
+export const moveCard = (id, monitorId) => (dispatch) => {
   dispatch(isFetchMoveCard(id, monitorId));
 };
 
-export const insertInPanel = (id, monitorId) => dispatch => {
+export const insertInPanel = (id, monitorId) => (dispatch) => {
   dispatch(isFetchInsertPanel(id, monitorId));
 };

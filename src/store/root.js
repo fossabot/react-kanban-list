@@ -7,5 +7,5 @@ import cardsReducer from '../components/Card/Card.reducers';
 export const rootReducer = combineReducers({
   panelsReducer,
   cardsReducer,
-  router: routerReducer
+  router: routerReducer,
 });

@@ -3,16 +3,28 @@
   "version": "0.1.0",
   "private": false,
   "license": "MIT",
+  "scripts": {
+    "start": "node scripts/start.js",
+    "build": "node scripts/build.js",
+    "test": "node scripts/test.js",
+    "eslint": "./node_modules/.bin/eslint -c .eslintrc -f table ./src",
+    "predeploy": "yarn build",
+    "deploy": "gh-pages -d build"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/Oda2/react-kanban-list"
+  },
+  "author": {
+    "email": "renato.oda2@gmail.com",
+    "name": "Renato Oda"
   },
   "homepage": "https://oda2.github.io/react-kanban-list",
   "dependencies": {
     "@babel/core": "7.1.0",
     "@svgr/webpack": "2.4.1",
     "babel-core": "7.0.0-bridge.0",
-    "babel-eslint": "9.0.0",
+    "babel-eslint": "^10.0.1",
     "babel-jest": "23.6.0",
     "babel-loader": "8.0.4",
     "babel-plugin-named-asset-import": "^0.2.3",
@@ -24,13 +36,13 @@
     "css-loader": "1.0.0",
     "dotenv": "6.0.0",
     "dotenv-expand": "4.2.0",
-    "eslint": "5.6.0",
+    "eslint": "^5.9.0",
     "eslint-config-react-app": "^3.0.5",
     "eslint-loader": "2.1.1",
     "eslint-plugin-flowtype": "2.50.1",
     "eslint-plugin-import": "2.14.0",
-    "eslint-plugin-jsx-a11y": "6.1.2",
-    "eslint-plugin-react": "7.11.1",
+    "eslint-plugin-jsx-a11y": "^6.1.2",
+    "eslint-plugin-react": "^7.11.1",
     "file-loader": "2.0.0",
     "fork-ts-checker-webpack-plugin-alt": "0.4.14",
     "fs-extra": "7.0.0",
@@ -69,18 +81,11 @@
     "style-loader": "0.23.0",
     "terser-webpack-plugin": "1.1.0",
     "url-loader": "1.1.1",
+    "uuid": "^3.3.2",
     "webpack": "4.19.1",
     "webpack-dev-server": "3.1.9",
     "webpack-manifest-plugin": "2.0.4",
     "workbox-webpack-plugin": "3.6.3"
-  },
-  "scripts": {
-    "start": "node scripts/start.js",
-    "build": "node scripts/build.js",
-    "test": "node scripts/test.js",
-    "predeploy": "yarn build",
-    "deploy": "gh-pages -d build"
-
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -97,6 +102,7 @@
       "!src/**/*.d.ts"
     ],
     "resolver": "jest-pnp-resolver",
+    "setupTestFrameworkScriptFile": "<rootDir>/src/test/setupTest.js",
     "setupFiles": [
       "react-app-polyfill/jsdom"
     ],
@@ -138,6 +144,9 @@
     ]
   },
   "devDependencies": {
+    "enzyme": "^3.7.0",
+    "enzyme-adapter-react-16": "^1.7.0",
+    "eslint-config-airbnb": "^17.1.0",
     "gh-pages": "^2.0.1"
   }
 }

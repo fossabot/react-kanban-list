@@ -47,13 +47,13 @@ class InputEditable extends Component {
           readOnly
         />
       </div>
-        <Button
-          onClick={this.handleDelete}
-          color="danger"
-          className="col-2"
-        >
-          <i class="icon ion-md-trash"></i>
-        </Button>
+      <Button
+        onClick={this.handleDelete}
+        color="danger"
+        className="col-2"
+      >
+        <i className="icon ion-md-trash" />
+      </Button>
     </div>
   );
 
@@ -67,7 +67,7 @@ class InputEditable extends Component {
     return (
       <div>
         {this.renderText()}
-      </div>)
+      </div>);
   }
 }
 

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { NavLink as RDLink } from 'react-router-dom';
-import { Navbar, Nav, NavItem, NavLink, NavbarToggler } from 'reactstrap';
+import {
+  Navbar, Nav, NavItem, NavLink, NavbarToggler,
+} from 'reactstrap';
 
 class Navigation extends Component {
   constructor(props) {
@@ -8,13 +10,14 @@ class Navigation extends Component {
 
     this.toggle = this.toggle.bind(this);
     this.state = {
-      isOpen: false
+      isOpen: false,
     };
   }
 
   toggle() {
+    const { isOpen } = this.state;
     this.setState({
-      isOpen: !this.state.isOpen
+      isOpen: !isOpen,
     });
   }
 

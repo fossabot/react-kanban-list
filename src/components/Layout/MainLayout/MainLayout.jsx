@@ -14,7 +14,7 @@ const MainLayout = (props) => {
         { children }
       </main>
     </div>
-  )
+  );
 };
 
 MainLayout.propTypes = { children: PropTypes.object.isRequired };

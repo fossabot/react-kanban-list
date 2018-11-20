@@ -1,9 +1,11 @@
 import React from 'react';
-import Panel from './Panel'
 import { Row, Container } from 'reactstrap';
+import Panel from './Panel';
 
 const Panels = (props) => {
-  const { panels, editPanel, deletePanel, moveCard } = props;
+  const {
+    panels, editPanel, deletePanel, moveCard,
+  } = props;
 
   return (
     <Container>
@@ -21,7 +23,7 @@ const Panels = (props) => {
         }
       </Row>
     </Container>
-  )
-}
+  );
+};
 
-export default Panels
+export default Panels;

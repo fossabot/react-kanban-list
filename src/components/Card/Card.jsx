@@ -18,8 +18,8 @@ class Card extends Component {
           <Col>
             {this.props.children}
           </Col>
-        </div>
-      )
+        </div>,
+      ),
     );
   }
 }
@@ -27,7 +27,7 @@ class Card extends Component {
 const dragNDropSrc = {
   beginDrag(props) {
     return { id: props.id };
-  }
+  },
 };
 
 const collect = (connect, monitor) => ({
@@ -36,7 +36,7 @@ const collect = (connect, monitor) => ({
 });
 
 const collectTarget = (connect, monitor) => ({
-  connectDropTarget: connect.dropTarget()
+  connectDropTarget: connect.dropTarget(monitor),
 });
 
 const cardHoverTarget = {
@@ -48,9 +48,9 @@ const cardHoverTarget = {
     if (id !== monitorId) {
       props.moveCard(id, monitorId);
     }
-  }
+  },
 };
 
 export default DragSource(CARD, dragNDropSrc, collect)(
-  DropTarget(CARD, cardHoverTarget, collectTarget)(Card)
-)
+  DropTarget(CARD, cardHoverTarget, collectTarget)(Card),
+);

@@ -16,23 +16,23 @@ const isFetchCreatePanel = value => ({
     id: uuid(),
     text: value,
     edit: false,
-    cards: []
-  }
+    cards: [],
+  },
 });
 
 export const isFetchEditPanel = payload => ({ type: EDIT_PANEL, payload });
 export const isFetchDeletePanel = id => ({ type: DELETE_PANEL, payload: { id } });
-export const isFetchMovelPanel = (id, monitorId) => ({ type: MOVE_PANEL, payload: { id, monitorId }});
+export const isFetchMovelPanel = (id, monitorId) => ({ type: MOVE_PANEL, payload: { id, monitorId } });
 
 export const isFetchInsertPanel = (panelId, cardId) => ({ type: INSERT_IN_PANEL, payload: { panelId, cardId } });
 export const isFetchRemoveFromPanel = (panelIdRemove, cardIdRemove) => ({ type: REMOVE_FROM_PANEL, payload: { panelIdRemove, cardIdRemove } });
-export const isFetchMoveCard = (cardIdMove, monitorCardMoveId) => ({ type: MOVE_CARD, payload: { cardIdMove, monitorCardMoveId }});
+export const isFetchMoveCard = (cardIdMove, monitorCardMoveId) => ({ type: MOVE_CARD, payload: { cardIdMove, monitorCardMoveId } });
 
 export const createPanel = () => async (dispatch) => {
   dispatch(isFetchCreatePanel('New Panel'));
 };
 
-export const editPanel = (id, value) => dispatch => {
+export const editPanel = (id, value) => (dispatch) => {
   const edited = { id };
 
   if (!value) {
@@ -45,10 +45,10 @@ export const editPanel = (id, value) => dispatch => {
   dispatch(isFetchEditPanel(edited));
 };
 
-export const deletePanel = (id) => dispatch => {
+export const deletePanel = id => (dispatch) => {
   dispatch(isFetchDeletePanel(id));
 };
 
-export const movePanel = (id, monitorId) => dispatch => {
+export const movePanel = (id, monitorId) => (dispatch) => {
   dispatch(isFetchMovelPanel(id, monitorId));
 };

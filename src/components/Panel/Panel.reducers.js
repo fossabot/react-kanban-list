@@ -15,10 +15,10 @@ const reducer = (state = initialState, action) => {
     case CREATE_PANEL:
       return [
         ...state,
-        action.payload
+        action.payload,
       ];
     case EDIT_PANEL:
-      return state.map(panel => {
+      return state.map((panel) => {
         const { id } = action.payload;
         if (id === panel.id) return Object.assign({}, panel, action.payload);
         return panel;
@@ -32,64 +32,62 @@ const reducer = (state = initialState, action) => {
         const { cards } = panel;
         if (!panel.cards.indexOf(cardId)) {
           return Object.assign({}, panel, {
-            cards: cards.filter((cardIdFilter) => {
-              return cardId !== cardIdFilter
-            })
+            cards: cards.filter(cardIdFilter => cardId !== cardIdFilter),
           });
         }
 
         if (panel.id === panelId) {
           return Object.assign({}, panel, {
-            cards: cards.concat(cardId)
+            cards: cards.concat(cardId),
           });
         }
 
         return panel;
       });
-      case MOVE_PANEL:
-        const targetDropId = action.payload.id;
-        const monitorId = action.payload.monitorId;
+    case MOVE_PANEL:
+      const targetDropId = action.payload.id;
+      const monitorId = action.payload.monitorId;
 
-        const targetImdex = state.findIndex(panel => panel.id === targetDropId)
-        const monitorIndex = state.findIndex(panel => panel.id === monitorId);
-        
-        return state;
-      case MOVE_CARD:
-        const { cardIdMove, monitorCardMoveId } = action.payload;
+      const targetImdex = state.findIndex(panel => panel.id === targetDropId);
+      const monitorIndex = state.findIndex(panel => panel.id === monitorId);
 
-        let targetPanel = state.filter(panel => panel.cards.indexOf(cardIdMove));
-        let monitorPanel = state.filter(panel => panel.cards.indexOf(monitorCardMoveId));
+      return state;
+    case MOVE_CARD:
+      const { cardIdMove, monitorCardMoveId } = action.payload;
 
-        targetPanel = targetPanel[0];
-        monitorPanel = monitorPanel[0];
+      let targetPanel = state.filter(panel => panel.cards.indexOf(cardIdMove));
+      let monitorPanel = state.filter(panel => panel.cards.indexOf(monitorCardMoveId));
 
-        const targetCardIndex = targetPanel.cards.indexOf(cardIdMove);
-        const monitorCardIndex = monitorPanel.cards.indexOf(monitorCardMoveId);
+      targetPanel = targetPanel[0];
+      monitorPanel = monitorPanel[0];
 
-        if (targetPanel.id === monitorCardIndex.id) {
-          // :X
+      const targetCardIndex = targetPanel.cards.indexOf(cardIdMove);
+      const monitorCardIndex = monitorPanel.cards.indexOf(monitorCardMoveId);
+
+      if (targetPanel.id === monitorCardIndex.id) {
+        // :X
+      }
+
+      return state.map((panel) => {
+        const panelId = panel.id;
+
+        console.log('painelId: ', panelId);
+
+        return panel;
+      });
+    case REMOVE_FROM_PANEL:
+      const { panelIdRemove, cardIdRemove } = action.payload;
+      return state.map((panel) => {
+        const { cards } = panel;
+
+        if (panelIdRemove !== panel.id) {
+          return panel;
         }
 
-        return state.map((panel) => {
-          const panelId = panel.id;
-
-          console.log('painelId: ', panelId);
-
-          return panel;
+        return Object.assign({}, panel, {
+          cards: cards.filter(id => cardIdRemove !== id),
         });
-      case REMOVE_FROM_PANEL:
-        const { panelIdRemove, cardIdRemove } = action.payload;
-        return state.map((panel) => {
-          const { cards } = panel;
-
-          if (panelIdRemove !== panel.id) {
-            return panel;
-          }
-
-          return Object.assign({}, panel, {
-            cards: cards.filter(id => cardIdRemove !== id)
-          });
-        });
+      });
     default:
       return state;
   }

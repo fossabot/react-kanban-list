@@ -11,10 +11,10 @@ const reducer = (state = initialState, action) => {
     case CREATE_CARD:
       return [
         ...state,
-        action.payload
+        action.payload,
       ];
     case EDIT_CARD:
-      return state.map(card => {
+      return state.map((card) => {
         const { id } = action.payload;
         if (id === card.id) return Object.assign({}, card, action.payload);
         return card;
