@@ -51,3 +51,22 @@ ul, li {
 .action-create {
 	margin: 1em 0 2em 0;
 }
+
+.card__painel {
+	width: 300px;
+	margin-bottom: 6%;
+}
+
+.card-body .row {
+	margin-bottom: 7%;
+}
+
+
+@media screen and (max-width: 767px) {
+	.card__div {
+		width: 100%;
+	}
+	.card__painel {
+		width: auto;
+	}
+}

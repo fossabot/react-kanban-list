@@ -26,7 +26,6 @@ class Cards extends Component {
   }
 
   render() {
-    console.log('this: ', this.props)
     return (
       <ul>
         {this.mountCards()}

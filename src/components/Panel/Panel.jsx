@@ -38,10 +38,10 @@ class Panel extends Component {
 
     return connectDragPreview(
       connectDropTarget(
-        <div>
+        <div class="card__div">
           <Col>
             {connectDragSource(
-              <div>
+              <div class="card__painel">
                 <Card>
                   <CardHeader>
                     <InputEditable
