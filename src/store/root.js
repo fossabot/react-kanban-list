@@ -4,7 +4,7 @@ import { routerReducer } from 'react-router-redux';
 import panelsReducer from '../components/Panel/Panel.reducers';
 import cardsReducer from '../components/Card/Card.reducers';
 
-export const rootReducer = combineReducers({
+export default combineReducers({
   panelsReducer,
   cardsReducer,
   router: routerReducer,

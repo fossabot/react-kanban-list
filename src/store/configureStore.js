@@ -1,8 +1,10 @@
+/*eslint-disable*/
+
 import { applyMiddleware, createStore } from 'redux';
 import promise from 'redux-promise';
 import thunk from 'redux-thunk';
 
-import { rootReducer } from './root';
+import rootReducer from './root';
 
 export const configureStore = (initialState) => {
   const reduxDevTools = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__;

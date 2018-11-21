@@ -1,3 +1,5 @@
+/*eslint-disable*/
+
 import {
   CREATE_PANEL,
   DELETE_PANEL,
