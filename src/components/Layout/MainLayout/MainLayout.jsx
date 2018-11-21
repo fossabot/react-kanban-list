@@ -1,14 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Header, Navigation } from '../index';
+import { Navigation } from '../index';
 
 const MainLayout = (props) => {
   const { children } = props;
 
   return (
     <div>
-      <Header />
       <Navigation />
       <main>
         { children }

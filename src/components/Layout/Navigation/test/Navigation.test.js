@@ -14,4 +14,15 @@ describe('Navigation', () => {
 
     expect(wrapper).not.toBeNull();
   });
+
+  it('should click in navbar toggler', () => {
+    const wrapper = mount(
+      <MemoryRouter>
+        <Navigation />
+      </MemoryRouter>,
+    );
+
+    wrapper.find('#navBarToggler').at(0).simulate('click');
+    expect(wrapper).not.toBeNull();
+  });
 });

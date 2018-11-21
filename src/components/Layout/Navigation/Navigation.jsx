@@ -24,7 +24,7 @@ class Navigation extends Component {
   render() {
     return (
       <Navbar color="light" light expand="md">
-        <NavbarToggler onClick={this.toggle} />
+        <NavbarToggler id="navBarToggler" onClick={this.toggle} />
         <Nav className="ml-auto" navbar>
           <NavItem>
             <NavLink to="/" tag={RDLink}>Board</NavLink>
